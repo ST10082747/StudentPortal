@@ -79,7 +79,7 @@ class Register : AppCompatActivity() {
                     uploadTask.storage.downloadUrl.addOnSuccessListener { uri ->
                         val photoUrl = uri.toString()
                         // register the user with the image URL
-                        registerUserWithEmailPasswordAndImage(email, password, qualification, photoUrl)
+                        registerUser(email, password, qualification, photoUrl)
                     }
                 }
                 .addOnFailureListener { e ->
@@ -90,7 +90,7 @@ class Register : AppCompatActivity() {
         }
     }
 
-    private fun registerUserWithEmailPasswordAndImage(email: String, password: String, qualification: String, photoUrl: String) {
+    private fun registerUser(email: String, password: String, qualification: String, photoUrl: String) {
 
         auth.createUserWithEmailAndPassword(userEmail.text.toString(), userPassword.text.toString() ).addOnCompleteListener(this) {
             if (it.isSuccessful) {
